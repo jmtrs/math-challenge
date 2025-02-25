@@ -31,11 +31,13 @@ export default function App() {
 
   // 3) useEffect para crear la conexión WebSocket solo una vez
   useEffect(() => {
+    const wsUrl = import.meta.env.VITE_WS_URL;
+
     if (hasConnectedRef.current) return;
     hasConnectedRef.current = true;
 
     if (!wsRef.current) {
-      const socket = new WebSocket("ws://localhost:3000");
+      const socket = new WebSocket(wsUrl);
       socket.binaryType = "arraybuffer";
 
       socket.onopen = () => {
