@@ -1,6 +1,6 @@
 interface ScoreDisplayProps {
   scores: { teamA: number; teamB: number };
-  currentTeam: "Team A" | "Team B";
+  currentTeam: "Team A" | "Team B" | null;
 }
 
 export function ScoreDisplay({ scores, currentTeam }: ScoreDisplayProps) {

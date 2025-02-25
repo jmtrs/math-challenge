@@ -12,6 +12,18 @@ dist
 dist-ssr
 *.local
 
+# Output
+.output
+.vercel
+/.svelte-kit
+/build
+
+# Env
+.env
+.env.*
+!.env.example
+!.env.test
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

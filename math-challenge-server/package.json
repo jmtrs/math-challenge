@@ -1,0 +1,28 @@
+{
+  "name": "math-multiplayer-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "deploy": "railway up",
+    "logs": "railway logs",
+    "run": "railway run",
+    "open": "railway open",
+    "status": "railway status",
+    "down": "railway down",
+    "postinstall": "npm install"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "Multiplayer Snake Game Server",
+  "dependencies": {
+    "heap": "^0.2.7",
+    "msgpack-lite": "^0.1.26",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
