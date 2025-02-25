@@ -18,7 +18,6 @@ export default function App() {
   const hasConnectedRef = useRef(false);
   const wsRef = useRef<WebSocket | null>(null);
 
-  // 2) Estados para la partida
   const [gameState, setGameState] = useState<GameState>(GameState.Waiting);
   const [team, setTeam] = useState<"Team A" | "Team B" | null>(null);
   const [scores, setScores] = useState({ teamA: 0, teamB: 0 });
