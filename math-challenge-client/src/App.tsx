@@ -29,7 +29,6 @@ export default function App() {
     null
   );
 
-  // 3) useEffect para crear la conexión WebSocket solo una vez
   useEffect(() => {
     const wsUrl = import.meta.env.VITE_WS_URL;
 
@@ -113,11 +112,10 @@ export default function App() {
 
       socket.onclose = () => {
         console.log("Desconectado del servidor WebSocket");
-        wsRef.current = null; // Limpia la ref
+        wsRef.current = null;
       };
     }
 
-    // Al desmontar el componente, cierra el socket
     return () => {
       if (wsRef.current) {
         wsRef.current.close();
@@ -126,18 +124,16 @@ export default function App() {
     };
   }, []);
 
-  // Añade texto cayendo
   function addFallingText(text: string) {
     const id = Date.now();
     const x = Math.random() * (window.innerWidth - 200);
     setFallingTexts((prev) => [...prev, { id, text, x }]);
   }
 
-  // handleSubmit: usamos la ref directamente
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
-    const socket = wsRef.current; // Cogemos la instancia de la ref
+    const socket = wsRef.current;
     if (!socket || !problem) {
       console.log("No hay socket o problem, no se envía la respuesta");
       return;

@@ -391,6 +391,14 @@ wss.on("connection", (ws) => {
               type: "game_started",
               content: "El juego ha comenzado",
             });
+            sendMessage(ws.id, {
+              type: "game_state",
+              state: {
+                waiting: false,
+                teamAScore: assignedRoom.teamAScore,
+                teamBScore: assignedRoom.teamBScore,
+              },
+            });
           } else {
             broadcastGameState(assignedRoom);
           }

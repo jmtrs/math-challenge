@@ -50,7 +50,7 @@ export function GameBoard({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onSubmit={onSubmit} // Esto disparará handleSubmit
+            onSubmit={onSubmit}
             className="flex flex-col items-center space-y-6 py-4"
           >
             {problem ? (
