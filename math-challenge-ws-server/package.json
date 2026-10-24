@@ -4,19 +4,15 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js",
-    "deploy": "railway up",
-    "logs": "railway logs",
-    "run": "railway run",
-    "open": "railway open",
-    "status": "railway status",
-    "down": "railway down",
-    "postinstall": "npm install"
+    "dev": "nodemon index.js"
+  },
+  "engines": {
+    "node": ">=24"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "Multiplayer Snake Game Server",
+  "description": "Math Challenge Multiplayer WebSocket Server",
   "dependencies": {
     "heap": "^0.2.7",
     "msgpack-lite": "^0.1.26",
