@@ -1,18 +1,20 @@
-# Usa la imagen base de Node.js
-FROM node:14
+# syntax=docker/dockerfile:1
 
-# Establece el directorio de trabajo
+# Etapa de deps: instala solo dependencias de produccion con lockfile (npm ci
+# = build reproducible). Las herramientas de build quedan fuera de la imagen
+# final.
+FROM node:24-alpine AS deps
 WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci --omit=dev --no-audit --no-fund
 
-# Copia los archivos de tu aplicación Node.js
-COPY package*.json ./
-RUN npm install
-
-# Copia el código de la aplicación
-COPY . .
-
-# Expone el puerto (opcional, Docker lo hace automáticamente en Railway)
+# Etapa runtime: alpine minimo, sin npm/herramientas, proceso como usuario
+# no-root (node) ya incluido en la imagen oficial.
+FROM node:24-alpine AS runtime
+ENV NODE_ENV=production
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY index.js package.json ./
+USER node
 EXPOSE 3000
-
-# Inicia la aplicación
 CMD ["node", "index.js"]
